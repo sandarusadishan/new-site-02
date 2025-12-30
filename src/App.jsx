@@ -7,21 +7,14 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsOfService from "./pages/TermsOfService";
+import WhatsAppButton from "./components/WhatsAppButton";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Preloader from "./components/Preloader";
-import WebGLFallback from "./components/ui/WebGLFallback";
-import { isWebGLAvailable } from "./lib/webglCheck";
-
 const queryClient = new QueryClient();
-
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-
-  if (!isWebGLAvailable()) {
-    return <WebGLFallback />;
-  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -41,6 +34,7 @@ const App = () => {
           <>
             <Toaster />
             <Sonner />
+            <WhatsAppButton />
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
